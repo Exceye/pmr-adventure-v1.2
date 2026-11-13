@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d2a21">
+<title>PMR Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CSS/style.css"></head><body><canvas id="c"></canvas>
+
+<!-- HUD saat bermain -->
+<div id="hud" class="px">
+  <div id="nm"></div>
+  <div id="loc"></div>
+  <div class="hud-stats"><span id="score">0 poin</span><span id="progress">0/6 rumah</span></div>
+  <div id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<!-- Tombol kontrol di kanan atas -->
+<div class="ctl">
+  <button id="fs" class="ib px" title="Layar penuh" aria-label="Layar penuh">⛶</button>
+  <button id="snd" class="ib px" data-snd="icon" title="Suara" aria-label="Nyalakan atau matikan suara">🔊</button>
+  <button id="mn" class="ib px" title="Menu" aria-label="Buka menu">☰</button>
+</div>
+
+<div id="ts" role="status"></div>
+<div id="jb"></div><div id="jk"></div><div id="er"></div>
+<button id="act" class="btn btn-yellow">Aksi</button>
+<div id="dlg" class="px" role="dialog" aria-live="polite"></div>
+
+<div id="treasureReveal" aria-live="polite">
+  <div class="treasure-card">
+    <img id="treasureJoke" src="assets/jokes.png" alt="Jumacare">
+    <div id="treasureMessage" hidden>
+      <p>Pesan dari developer 💌<br>Maaf ya kalau game-nya belum terlalu bagus. Pengerjaannya mendadak, jadi belum semuanya bisa maksimal. Terima kasih sudah mau main dan memahami! ❤️</p>
+      <button id="treasureContinue" type="button">Lanjutkan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lobi / layar awal -->
+<div id="st"><div class="st-in">
+  <div class="logo">
+    <div class="badge" aria-hidden="true"></div>
+    <h1><span>PMR</span>Adventure</h1>
+  </div>
+  <p class="tag">Jelajahi kampung, bantu warga, kumpulkan poin!</p>
+  <div class="card px">
+    <label class="fl" for="ni">Nama petugas</label>
+    <input id="ni" maxlength="14" placeholder="Masukkan namamu" autocomplete="off">
+    <div class="fl">Pilih karakter</div>
+    <div id="gs">
+      <button class="g on" data-g="m" type="button"><img id="pm" alt=""><span>Laki-laki</span></button>
+      <button class="g" data-g="f" type="button"><img id="pf" alt=""><span>Perempuan</span></button>
+    </div>
+    <p id="last" hidden></p>
+    <button id="go" class="btn btn-red" type="button">Mulai main</button>
+    <button id="lb" class="btn btn-yellow" type="button">🏆 Leaderboard</button>
+    <p class="how">Geser layar atau tekan W A S D untuk berjalan. Dekati orang atau pintu, lalu tekan tombol aksi.</p>
+  </div>
+</div></div>
+
+<!-- Leaderboard -->
+<div id="lbp" class="overlay"><div class="panel px">
+  <h2>🏆 Leaderboard</h2>
+  <div id="lbl"></div>
+  <p id="lbn"></p>
+  <button id="lbx" class="btn btn-red" type="button">Tutup</button>
+</div></div>
+
+<!-- Layar selesai -->
+<div id="endp" class="overlay"><div class="panel px">
+  <div id="endStars" class="stars" aria-hidden="true"><span>★</span><span>★</span><span>★</span></div>
+  <h2>Misi selesai!</h2>
+  <div class="end-score"><b id="endScore">0</b><span>dari 90 poin</span></div>
+  <p id="endMsg"></p>
+  <p class="save" data-save></p>
+  <button id="endRetry" class="btn btn-paper small" type="button" hidden>Coba simpan lagi</button>
+  <div class="btn-col">
+    <button id="endLb" class="btn btn-yellow" type="button">🏆 Lihat leaderboard</button>
+    <button id="endHome" class="btn btn-red" type="button">🏠 Kembali ke lobi</button>
+    <button id="endClose" class="btn btn-paper" type="button">Lanjut jelajah</button>
+  </div>
+</div></div>
+
+<!-- Menu jeda -->
+<div id="menu" class="overlay"><div class="panel px">
+  <h2>Jeda</h2>
+  <div class="btn-col">
+    <button id="mnResume" class="btn btn-green" type="button">Lanjutkan main</button>
+    <button id="mnSnd" class="btn btn-paper" type="button" data-snd="label">🔊 Suara: nyala</button>
+    <button id="mnLb" class="btn btn-yellow" type="button">🏆 Leaderboard</button>
+    <button id="mnHome" class="btn btn-red" type="button">🏠 Kembali ke lobi</button>
+  </div>
+</div></div>
+
+<script type="module" src="js/game.js"></script></body></html>
